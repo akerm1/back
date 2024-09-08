@@ -1,5 +1,9 @@
 {
   "projects": {
-    "default": "login2-d485e"
-  }
+    "default": "login2-d485e",
+    " ": "login2-d485e"
+  },
+  "targets": {},
+  "etags": {},
+  "dataconnectEmulatorConfig": {}
 }

@@ -13,7 +13,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
   background: url(../images/back.jpg) no-repeat center center;
   background-size: cover;
 }
@@ -23,6 +23,7 @@ body {
   flex-direction: column;
   align-items: center;
   width: 100%;
+  max-width: 1200px;
   padding: 20px;
 }
 
@@ -36,6 +37,7 @@ body {
   margin: 10px;
   display: flex;
   border-radius: 12px;
+  transition: all 0.3s ease;
 }
 
 .div1:hover {
@@ -171,6 +173,24 @@ div {
 }
 
 /* Media Queries for Responsive Design */
+@media (max-width: 1024px) {
+  .container {
+    padding: 15px;
+  }
+
+  #profile {
+    max-width: 90%;
+  }
+
+  .order-container {
+    max-width: 700px;
+    max-height: 320px;
+  }
+
+
+
+}
+
 @media (max-width: 768px) {
   body {
     flex-direction: column;
@@ -192,13 +212,16 @@ div {
     max-width: 100%;
   }
 
+
   .btn {
     font-size: 14px;
     padding: 8px 16px;
   }
 
   .order-container {
-    max-height: 300px; /* Adjust for smaller screens */
+    max-width: 90%;
+    max-height: 200px;
+
   }
 }
 
@@ -206,6 +229,10 @@ div {
   span {
     font-size: large;
   }
+
+
+
+
 
   .div1 {
     height: 35px;
@@ -221,8 +248,100 @@ div {
     padding: 10px;
   }
 
+
   .order-container {
-    max-height: 250px; /* Further adjust for very small screens */
+    max-height: 550px;
+    position: relative;
+    
   }
 }
 
+
+
+
+a#forgotPassword {
+  display: flex;
+  top: 80px;
+  margin-left: 100px;
+  font-size: 14px;
+  color: #f70000;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a#forgotPassword:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.contact-links {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-right: 50px;
+}
+
+.contact-card {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: white;
+  background-color: #f5f5f5;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  max-width: 220px;
+  height: auto;
+}
+
+.contact-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.icon-container {
+  background-color: #ffffff;
+  border-radius: 50%;
+  padding: 8px;
+  margin-right: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.icon-container i {
+  font-size: 20px;
+}
+
+.telegram-card {
+  background-color: #0088cc;
+}
+
+.whatsapp-card {
+  background-color: #25d366;
+}
+
+.text-container h4 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.text-container p {
+  margin: 2px 0 0;
+  font-size: 12px;
+  color: #f0f0f0;
+}

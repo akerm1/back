@@ -165,6 +165,62 @@ align-items: center;
 }
 
 
+
+
+
+
+
+
+
+
+
+/* Search Suggestions Dropdown */
+.searchBox {
+  position: relative; /* Position relative for the suggestions box */
+}
+
+.searchSuggestions {
+  position: absolute;
+  top: 100%; /* Position below the search input */
+  left: 0;
+  width: 100%;
+  background-color: #00158a;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
+  display: none; /* Initially hidden */
+  flex-direction: column; /* Stack items vertically */
+  z-index: 1000; /* Ensure it's above other elements */
+}
+
+.suggestionItem {
+  padding: 10px;
+  cursor: pointer;
+color: white;
+  display: flex; /* Use flex for centering text if needed */
+  align-items: center;
+font-size: larger;
+font-family: 'Times New Roman', Times, serif;
+}
+
+.suggestionItem:hover {
+  background-color: #1e0055;
+  border: none;
+  border-radius: 15px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 .searchBox {
   display: flex;
 
@@ -219,31 +275,7 @@ button:active {
 
 
 
-.options {
-  display: flex;
-  align-items: center;
-}
 
-.currency-option,
-.language-option {
-  margin-right: 10px;
-}
-
-.currency-option select,
-.language-option select {
-  padding: 8px;
-  border: none;
-  border-radius: 19px;
-  background-color: rgb(47, 0, 255);
-  transition: background-color 0.3s;
-}
-
-.currency-option select:hover,
-.language-option select:hover {
-  background-color: #000000;
-color: white;
-border: 1px solid;
-}
 
 .profile-section {
   flex: 0 0 auto; /* Prevent from stretching */
@@ -416,7 +448,12 @@ background-color: black;
   color: #cfcdcd;
   margin-left: 30px;
   z-index: 9;
+}
 
+#trend{
+  margin-top: -170px;
+  position: relative;
+  margin-bottom: 89px;
 }
 .section-title1 {
   text-align: center;
@@ -434,6 +471,7 @@ background-color: black;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin-top: -90px;
 }
 
 .product-card {
@@ -560,12 +598,13 @@ a{
 
 .main-footer {
  background: rgb(4, 1, 65);
-  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgb(119, 119, 219) 91%, rgba(0,212,255,1) 100%);;
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgb(119, 119, 219) 91%, rgba(0,212,255,1) 100%);
+
   color: #fff;
   padding: 20px 0;
   text-align: center;
-  height: 160px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   font-family: Arial, Helvetica, sans-serif;
@@ -577,42 +616,149 @@ a{
   max-width: 1200px;
   margin: 0 auto;
   display: flex;
-  justify-content: space-evenly;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
 }
 
 .footer-content p {
-  margin: 50px;
+  margin: 10px;
 
 }
 
-.footer-content ul {
-  list-style: georgian;
-  padding: 0;
-  margin: 0;
+
+
+
+.contact-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgb(4, 1, 65);
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgb(119, 119, 219) 91%, rgba(0,212,255,1) 100%);
+  width: max-content;
 }
 
-.footer-content ul li {
-  display: inline-block;
-  margin-right: 20px;
-}
-
-.footer-content ul li:last-child {
-  margin-right: 0;
-}
-
-.footer-content ul li a {
-  color: #fff;
+.contact-card {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  border-radius: 10px;
   text-decoration: none;
-  transition: color 0.3s;
+  color: white;
+  background-color: #f5f5f5;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  max-width: 220px;
+  height: auto;
 }
 
-.footer-content ul li a:hover {
-  color: #ddd;
+.contact-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.icon-container {
+  background-color: #ffffff;
+  border-radius: 50%;
+  padding: 8px;
+  margin-right: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.icon-container i {
+  font-size: 20px;
+}
+
+.telegram-card {
+  background-color: #0088cc;
+}
+
+.whatsapp-card {
+  background-color: #25d366;
+}
+
+.text-container h4 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.text-container p {
+  margin: 2px 0 0;
+  font-size: 12px;
+  color: #f0f0f0;
 }
 
 
 
+
+
+
+
+
+
+.contact-links1 {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-right: 50px;
+}
+
+.contact-card {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: white;
+  background-color: #f5f5f5;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  max-width: 220px;
+  height: auto;
+}
+
+.contact-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.icon-container {
+  background-color: #ffffff;
+  border-radius: 50%;
+  padding: 8px;
+  margin-right: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.icon-container i {
+  font-size: 20px;
+}
+
+.telegram-card {
+  background-color: #0088cc;
+}
+
+.whatsapp-card {
+  background-color: #25d366;
+}
+
+.text-container h4 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.text-container p {
+  margin: 2px 0 0;
+  font-size: 12px;
+  color: #f0f0f0;
+}
 
 
 
@@ -859,7 +1005,7 @@ a{
   }
   
   
-  
+
   
   
   
@@ -1091,6 +1237,11 @@ a{
     transition: transform 0.3s ease-in-out;
   }
   
+
+
+  .contact-links1{
+    display: none;
+  }
   
   @keyframes scroll {
     0% {
@@ -1115,11 +1266,12 @@ a{
     text-align: start;
     font-size: 2.5rem; /* Adjusted font size */
     margin-left: 20px;
-    margin-bottom: 2rem;
+    margin-bottom: 5rem;
     font-family: monospace;
     color: #cfcdcd;
     margin-left: 30px;
     z-index: 9;
+    position: relative;
   
   }
   .section-title1 {
@@ -1384,15 +1536,17 @@ a{
     display: none; /* Hide when user is signed in */
   }
   
-  
-  
+  .rem{
+
+    display: none;
+  }
   }
 
 
 
   @media only screen and (max-width: 366px) {
     .product-card {
-      width: 120px; /* Adjusted width */
+      width: 160px; /* Adjusted width */
       height: 220px;
       background-color: #f2f2f2;
       border-radius: 40px;
@@ -1404,8 +1558,15 @@ a{
       z-index: 2;
     }
 
+.rem{
+
+  display: none;
+}
+  
     .section-title1{
       margin-top: 80px;
+      margin-bottom: 4rem;
+      position: relative;
     }
 
 
@@ -1427,11 +1588,35 @@ a{
 
 
     }
+
+
+
+
   }
 
 
   @media (max-width: 768px) {
     /* Hide the search box in the header */
+    
+    
+    .product-card {
+      width: 150px; /* Adjusted width */
+      height: 270px;
+      background-color: #f2f2f2;
+      border-radius: 20px;
+      overflow: hidden;
+      transition: transform 0.3s ease-in-out;
+      margin: 7px;
+      display: flex;
+      flex-direction: column;
+      z-index: 2;
+    }
+    
+    
+
+
+    
+    
     .main-header .searchBox {
       display: none;
     }
@@ -1459,39 +1644,35 @@ display: flex;
 justify-content: center;
 }
 
+#trend{
+  position: relative;
+  margin-bottom: 90px;
+}
 
+.main-footer li{
+  display: none;
+}
 
   }
+
+  
 
   @media (max-width: 1100px) {
     /* Hide the search box in the header */
-    .main-header .searchBox {
+    .main-header  {
       display: none;
     }
+
+
 
     .main-header{
       display: flex;
       justify-content: space-between;
     }
-  
-    /* Add a new search box below the header */
-.searchBox{
-  display: flex;
-  height: 50px;
-  position: relative;
-  margin-top: 69px;
-  width: 90%;
-}
-  
-  .category-bar{
-    margin-top: -55px;
-  }
-
-.searchbx{
-display: flex;
-justify-content: center;
-}
-
+    .contact-links1{
+      display: none;
+    }
 
 
   }
+  

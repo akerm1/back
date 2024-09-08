@@ -1,7 +1,7 @@
 // Import Firebase modules
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.18.0/firebase-app.js";
 import { getFirestore, query, where, orderBy, getDocs, collection, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/9.18.0/firebase-firestore.js";
-import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.18.0/firebase-auth.js";
+import { getAuth, onAuthStateChanged, signOut, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/9.18.0/firebase-auth.js";
 
 // Initialize Firebase
 const firebaseConfig = {
@@ -20,17 +20,14 @@ const auth = getAuth(app);
 
 // Ensure DOM is fully loaded
 document.addEventListener('DOMContentLoaded', () => {
-  console.log('DOM fully loaded and parsed');
-  
   const emailSpan = document.getElementById('email');
   const userNameSpan = document.getElementById('userName');
-  const changePasswordBtn = document.getElementById('changePasswordBtn');
   const signOutBtn = document.getElementById('signOutBtn');
+  const forgotPasswordLink = document.getElementById('forgotPassword');
   const ordersContainer = document.getElementById('orders');
 
   // Display user info
   onAuthStateChanged(auth, async (user) => {
-    console.log('Auth state changed:', user);
     if (user) {
       emailSpan.textContent = user.email || 'No email';
       userNameSpan.textContent = user.displayName || 'No username';
@@ -44,38 +41,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Handle Sign Out
   signOutBtn.addEventListener('click', () => {
-    console.log('Sign Out button clicked');
     signOut(auth).then(() => {
-      console.log('Sign out successful');
       alert('Successfully signed out');
       window.location.href = 'sign.html'; // Redirect to sign-in page or home page
     }).catch((error) => {
-      console.error('Sign Out Error', error);
       alert('Error signing out');
+      console.error('Sign Out Error', error);
     });
   });
 
-  // Handle Change Password
-  changePasswordBtn.addEventListener('click', () => {
-    console.log('Change Password button clicked');
-    const user = auth.currentUser;
-    console.log('Current user:', user);
-
-    if (user) {
-      const newPassword = prompt('Enter new password:');
-      console.log('New password entered:', newPassword);
-
-      if (newPassword) {
-        user.updatePassword(newPassword).then(() => {
-          console.log('Password changed successfully');
-          alert('Password changed successfully');
-        }).catch((error) => {
-          console.error('Error changing password', error);
-          alert('Error changing password');
+  // Handle Forgot Password
+  forgotPasswordLink.addEventListener('click', (event) => {
+    event.preventDefault();
+    const userEmail = auth.currentUser?.email;
+    
+    if (userEmail) {
+      sendPasswordResetEmail(auth, userEmail)
+        .then(() => {
+          alert(`Password reset email sent to ${userEmail}`);
+        })
+        .catch((error) => {
+          console.error('Error sending password reset email', error);
+          alert('Error sending password reset email');
         });
-      } else {
-        console.log('No new password entered');
-      }
     } else {
       alert('No user is logged in');
     }
@@ -84,14 +72,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Fetch orders from Firestore
 async function fetchOrders(userId) {
-  console.log("Fetching orders for user ID:", userId);
   try {
     const ordersCollection = collection(db, 'orders');
     const q = query(ordersCollection, where('userId', '==', userId), orderBy('date', 'desc'));
     const querySnapshot = await getDocs(q);
 
     if (querySnapshot.empty) {
-      console.log("No orders found.");
       document.getElementById('orders').innerHTML = '<p>No orders found.</p>';
       return;
     }
@@ -101,7 +87,6 @@ async function fetchOrders(userId) {
 
     querySnapshot.forEach((doc) => {
       const orderData = doc.data();
-      console.log("Order data:", orderData);
       const orderElement = document.createElement('div');
       orderElement.classList.add('order');
 
@@ -127,19 +112,17 @@ async function fetchOrders(userId) {
     document.querySelectorAll('.delete-button').forEach(button => {
       button.addEventListener('click', async (event) => {
         const orderId = event.target.getAttribute('data-id');
-        console.log("Deleting order with ID:", orderId);
         await deleteOrder(orderId);
       });
     });
   } catch (error) {
-    console.error('Error fetching orders:', error);
     document.getElementById('orders').innerHTML = '<p>Error fetching orders. Please try again later.</p>';
+    console.error('Error fetching orders:', error);
   }
 }
 
 // Delete order from Firestore
 async function deleteOrder(orderId) {
-  console.log("Attempting to delete order with ID:", orderId);
   try {
     await deleteDoc(doc(db, 'orders', orderId));
     alert('Order deleted successfully');
@@ -149,10 +132,7 @@ async function deleteOrder(orderId) {
       await fetchOrders(user.uid);
     }
   } catch (error) {
-    console.error('Error deleting order:', error);
     alert('Failed to delete order');
+    console.error('Error deleting order:', error);
   }
 }
-
-
-
