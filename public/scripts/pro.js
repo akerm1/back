@@ -5,12 +5,12 @@ import { getAuth, onAuthStateChanged, signOut, sendPasswordResetEmail } from "ht
 
 // Initialize Firebase
 const firebaseConfig = {
-  apiKey: "AIzaSyBNTDHR67L48F1nPReRs2dSoQ-PxgNKWYM",
-  authDomain: "login2-d485e.firebaseapp.com",
-  projectId: "login2-d485e",
-  storageBucket: "login2-d485e.appspot.com",
-  messagingSenderId: "602998933832",
-  appId: "1:602998933832:web:a397944522901f3c12cb7d"
+  apiKey: "AIzaSyC1KApdTOCrWAaQ1EDsh4CLfFslPzakSFk",
+  authDomain: "voyllar-a872f.firebaseapp.com",
+  projectId: "voyllar-a872f",
+  storageBucket: "voyllar-a872f.appspot.com",
+  messagingSenderId: "112983014466",
+  appId: "1:112983014466:web:f724d2566b6a0f7f5a01db"
 };
 
 // Initialize Firebase
