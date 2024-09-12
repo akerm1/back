@@ -1,0 +1,3 @@
+[build]
+publish = "."        # Since your `index.html` is in the root
+functions = "functions"  # The folder where your serverless functions are stored
